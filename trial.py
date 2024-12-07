@@ -14,8 +14,6 @@ adc_2.width(ADC.WIDTH_12BIT)
 
 filename = "final_experiment.txt"
 
-
-
 A = 3303.902
 B = -3.729009
 time_elapsed = 0
@@ -24,12 +22,8 @@ temps_1 = []
 resistance_values_2 = []
 temps_2 = []
 i_values = []
-end_temperature = "blank"
 
-answer = math.log(math.e)
-print("answer = " + str(answer))
-
-def funnyfunction(iterations):
+def runtrial(iterations):
     for i in range (iterations):
         global time_elapsed
         
@@ -56,17 +50,17 @@ def funnyfunction(iterations):
         time.sleep(1)
 
 heater.value(1)
-funnyfunction(5)
+runtrial(5)
 
 print("\nHEATER ON!!")
 
 heater.value(0)
-funnyfunction(2)
+runtrial(2)
 heater.value(1)
     
 print("\nHEATER OFF!!")
     
-funnyfunction(241)
+runtrial(241)
     
 with open (filename, 'a') as file_object:
     file_object.write("\n thermistor 1 temperature values \n" + str(temps_1) + "\n thermistor 2 temperature values \n" + str(temps_2) + "\n time (seconds)\n " + str(i_values))
